@@ -1,257 +1,330 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Letter & Proposal for Neha</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Dancing Script', cursive;
-            background: linear-gradient(to bottom, #ffe6e6, #ffb3ba);
-            color: #d63384;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Neha ❤️</title>
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Dancing Script', cursive;
+}
 
-        .photo, .gallery-img, .gif {
-            width: 300px;
-            height: auto;
-            border-radius: 10px;
-            margin: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        }
+body{
+  background:linear-gradient(135deg,#ffe6e6,#ffb3ba);
+  overflow:hidden;
+  text-align:center;
+}
 
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px 0;
-        }
+/* ===== sections ===== */
+.section{
+  height:100vh;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
 
-        .gifs {
-            margin: 20px 0;
-        }
+.section.active{
+  display:flex;
+  flex-direction:column;
+}
 
-        .gif {
-            width: 200px;
-            animation: float 3s ease-in-out infinite;
-        }
+.container{
+  background:rgba(255,255,255,0.95);
+  padding:25px;
+  border-radius:20px;
+  max-width:750px;
+}
 
-        .letter {
-            font-size: 1.5em;
-            line-height: 1.6;
-            margin: 20px 0;
-        }
+/* buttons */
+button{
+  background:#d63384;
+  color:white;
+  border:none;
+  padding:10px 25px;
+  border-radius:25px;
+  font-size:18px;
+  margin:10px;
+  cursor:pointer;
+}
 
-        .proposal-text {
-            animation: fadeIn 2s;
-        }
+button:hover{
+  background:#b0246a;
+}
 
-        .pulse {
-            animation: pulse 2s infinite;
-        }
+/* gifs */
+.gif{
+  width:130px;
+  margin:10px;
+  border-radius:12px;
+}
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
+/* ===== horizontal gallery ===== */
+.gallery{
+  display:flex;
+  overflow-x:auto;
+  gap:15px;
+  padding:10px;
+  scroll-snap-type:x mandatory;
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+.gallery img{
+  height:240px;
+  width:auto;
+  border-radius:15px;
+  flex-shrink:0;
+  scroll-snap-align:center;
+  cursor:pointer;
+  transition:0.3s;
+}
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+.gallery img:hover{
+  transform:scale(1.08);
+}
 
-        .love-meter {
-            font-size: 1.5em;
-            margin-top: 20px;
-            animation: glow 1s infinite alternate;
-        }
+/* image popup */
+.imgPopup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
 
-        @keyframes glow {
-            from { text-shadow: 0 0 5px #ff69b4; }
-            to { text-shadow: 0 0 20px #ff69b4; }
-        }
+.imgPopup img{
+  width:85%;
+  max-width:380px;
+  border-radius:20px;
+  box-shadow:0 0 45px #ff69b4;
+  animation:zoom 0.4s ease;
+}
 
-        button {
-            background: #d63384;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.3s;
-            margin: 10px;
-        }
+@keyframes zoom{
+  from{transform:scale(0)}
+  to{transform:scale(1)}
+}
 
-        button:hover {
-            background: #b0246a;
-        }
+/* ===== final popup ===== */
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.65);
+  backdrop-filter:blur(6px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
 
-        /* Falling hearts animation */
-        .heart {
-            position: absolute;
-            color: #ff69b4;
-            font-size: 2em;
-            animation: fall 5s linear infinite;
-        }
+.popup-box{
+  background:white;
+  padding:30px;
+  border-radius:25px;
+}
 
-        @keyframes fall {
-            0% { top: -10%; opacity: 1; }
-            100% { top: 100%; opacity: 0; }
-        }
+.popup-box img{
+  width:200px;
+  border-radius:15px;
+  margin:10px;
+}
 
-        /* Hide sections by default */
-        .section {
-            display: none;
-        }
+/* hearts */
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:20px;
+  animation:fall 5s linear infinite;
+}
 
-        .section.active {
-            display: block;
-        }
+@keyframes fall{
+  to{transform:translateY(110vh);opacity:0;}
+}
 
-        /* Responsive for mobile */
-        @media (max-width: 600px) {
-            .photo, .gallery-img, .gif {
-                width: 200px;
-            }
-            .gallery {
-                flex-direction: column;
-            }
-        }
-    </style>
+/* fireworks */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+}
+</style>
 </head>
+
 <body>
-    <!-- Section 1: Love Letter -->
-    <div id="love-letter" class="section active">
-        <div class="container">
-            <h1>My Love Letter to You</h1>
-            <img src="ChatGPT Image Jan 26, 2026, 08_24_26 PM.png" alt="Your honey say to this " class="photo">
-           <p class="letter">
-    My Dearest Neha,<br><br>
-    In the quiet moments when the world fades away, I find myself lost in thoughts of you. Your smile is like the first ray of sunlight breaking through a stormy sky, warming my soul and chasing away the shadows. From the day we met, you've been the melody in my heart, the spark that ignites my every dream.<br><br>
-    Remember our first walk under the stars? 🌟 Your laughter danced like fireflies in the night, and I knew then that you were my forever. You've turned ordinary days into adventures, filled with joy, tenderness, and a love so deep it feels like an endless ocean, pulling me closer with every wave.<br><br>
-    You are my strength, my inspiration, the one who makes me believe in magic. With you, life is a beautiful symphony, and I cherish every note we play together.<br><br>
-    Forever yours, in every heartbeat,<br>
-    Anuj 💖
-</p>
-            
-            <button onclick="playMusic()">Play Our Song</button>
-            <audio id="music" src="images/romantic-song.mp3" loop></audio>
-            <br>
-            <button onclick="nextSection()">Next: Our Pics & Proposal</button>
-        </div>
+	<a href="https://github.com/anujk423726-a11y/psychic-palm-tree/blob/main/N.n.html">GitHub Open</a>
+
+
+<!-- ========= PAGE 1 ========= -->
+<div class="section active">
+  <div class="container">
+    <h1 id="type"></h1>
+
+    <div>
+      <img class="gif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+      <img class="gif" src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif">
     </div>
 
-    <!-- Section 2: Gallery & Proposal -->
-    <div id="gallery-proposal" class="section">
-        <div class="container">
-            <h1> you are in my heart  </h1>
-            
-            <!-- Photo Gallery -->
-            <div class="gallery">
-                <img src="WhatsApp Image 2026-01-21 at 8.19.33 PM.jpeg" alt="Memory 1" class="gallery-img">
-                <img src="WhatsApp Image 2026-01-06 at 1.56.18 PM.jpeg" alt="Memory 2" class="gallery-img">
-                <img src="WhatsApp Image 2026-01-06 at 1.48.31 PM.jpeg" alt="Memory 3" class="gallery-img">
-				<img src="WhatsApp Image 2026-01-21 at 8.19.00 PM.jpeg" alt="Memory 4" class="gallery-img">
-                <!-- Add more photos as needed -->
-            </div>
-            
-            <!-- Romantic GIFs -->
-            <div class="gifs">
-                <img src="https://media.giphy.com/media/3o7TKz9bX9Z8LxJL7y/giphy.gif" alt="Romantic GIF" class="gif"> <!-- Example: Kissing couple -->
-                <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Heart GIF" class="gif"> <!-- Example: Floating hearts -->
-            </div>
-            
-            <!-- Proposal Letter -->
-            <div class="proposal">
-                <h2 class="pulse">My Dearest Neha,</h2>
-                <p class="letter proposal-text">
-                    From the first time our eyes met, I knew you were the one. You've filled my life with joy, laughter, and endless love. Through every adventure and quiet moment, you've been my everything.<br><br>
-                    Today, I want to ask you something that will change our forever. Will you make me the happiest person alive and say yes to spending the rest of our lives together?<br><br>
-                    💍 Will you marry me? 💍<br><br>
-                    With all my heart,<br>
-                    Anuj
-                </p>
-                <div class="love-meter">Love Level: <span id="love-level">0%</span> ❤️</div>
-            </div>
-            
-            <button onclick="prevSection()">Back to Love Letter</button>
-        </div>
+    <button onclick="next()">Next ❤️</button>
+  </div>
+</div>
+
+<!-- ========= PAGE 2 ========= -->
+<div class="section">
+  <div class="container">
+    <h1>My Love Letter 💌</h1>
+    <p>
+      Neha ❤️ tum meri duniya ho.  
+      Tumhari smile meri sabse badi khushi hai.  
+      Main hamesha tumhare saath rehna chahta hu.  
+      Forever yours — Anuj
+    </p>
+    <button onclick="next()">Memories 📸</button>
+  </div>
+</div>
+
+<!-- ========= PAGE 3 GALLERY ========= -->
+<div class="section">
+  <div class="container">
+    <h1>Our Memories 💖</h1>
+
+    <div class="gallery">
+      <img src="WhatsApp Image 2026-01-21 at 8.19.33 PM.jpeg" onclick="openImg(this.src)">
+      <img src="WhatsApp Image 2026-01-06 at 1.56.18 PM.jpeg" onclick="openImg(this.src)">
+      <img src="WhatsApp Image 2026-01-06 at 1.48.31 PM.jpeg" onclick="openImg(this.src)">
+      <img src="WhatsApp Image 2026-01-21 at 8.19.00 PM.jpeg" onclick="openImg(this.src)">
+	  <img src="" onClick="openImg(this.src)">
+	  <img src="" onClick="openImg(this.src)">
+	  <img src="" onClick="openImg(this.src)">
     </div>
 
-    <script>
-        // Function to play music
-        function playMusic() {
-            const audio = document.getElementById('music');
-            if (audio) audio.play();
-        }
+    <button onclick="next()">Next ❤️</button>
+  </div>
+</div>
 
-        // Navigation functions
-        function nextSection() {
-            document.getElementById('love-letter').classList.remove('active');
-            document.getElementById('gallery-proposal').classList.add('active');
-        }
+<!-- image popup -->
+<div class="imgPopup" id="imgPopup" onclick="this.style.display='none'">
+  <img id="popupImg">
+</div>
 
-        function prevSection() {
-            document.getElementById('gallery-proposal').classList.remove('active');
-            document.getElementById('love-letter').classList.add('active');
-        }
+<!-- ========= PAGE 4 ========= -->
+<div class="section">
+  <div class="container">
+    <h1>Will You Always Be Mine? 💍</h1>
 
-        // Generate falling hearts
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 5000);
-        }
+    <div>
+      <img class="gif" src="https://media.giphy.com/media/SYo1DFS8NLhhqzzjMU/giphy.gif">
+      <img class="gif" src="https://media.giphy.com/media/MpeWJ9JyTyOm4/giphy.gif">
+    </div>
 
-        setInterval(createHeart, 300);
+    <button onclick="showLove()">YES 😍</button>
+    <button id="no">NO 😜</button>
+  </div>
+</div>
 
-        // Love meter animation (starts when proposal section is shown)
-        let loveInterval;
-        function startLoveMeter() {
-            let level = 0;
-            loveInterval = setInterval(() => {
-                level += 1;
-                document.getElementById('love-level').textContent = level + '%';
-                if (level >= 100) clearInterval(loveInterval);
-            }, 50);
-        }
+<!-- ========= FINAL POPUP ========= -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h1>I LOVE YOU NEHA ❤️</h1>
+    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+    <br>
+    <button onclick="restart()">Restart 🔄</button>
+  </div>
+</div>
 
-        // Trigger love meter when switching to proposal section
-        document.getElementById('gallery-proposal').addEventListener('transitionend', () => {
-            if (document.getElementById('gallery-proposal').classList.contains('active')) {
-                startLoveMeter();
-            }
-        });
-    </script>
+<canvas id="fire"></canvas>
+
+<script>
+/* navigation */
+let sections=document.querySelectorAll(".section");
+let index=0;
+
+function next(){
+  sections[index].classList.remove("active");
+  index++;
+  sections[index].classList.add("active");
+}
+
+/* restart full */
+function restart(){
+  location.reload();
+}
+
+/* typewriter */
+let text="Hi Neha ❤️ This surprise is only for you...";
+let i=0;
+let el=document.getElementById("type");
+
+(function type(){
+  if(i<text.length){
+    el.innerHTML+=text[i++];
+    setTimeout(type,40);
+  }
+})();
+
+/* gallery popup */
+function openImg(src){
+  popupImg.src=src;
+  imgPopup.style.display="flex";
+}
+
+/* hearts */
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+},300);
+
+/* no run */
+let no=document.getElementById("no");
+no.onmouseover=()=>{
+  no.style.position="absolute";
+  no.style.left=Math.random()*80+"vw";
+  no.style.top=Math.random()*80+"vh";
+}
+
+/* yes popup */
+function showLove(){
+  popup.style.display="flex";
+  fireworks();
+}
+
+/* fireworks */
+function fireworks(){
+  let canvas=document.getElementById("fire");
+  let ctx=canvas.getContext("2d");
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+
+  setInterval(()=>{
+    ctx.fillStyle="rgba(0,0,0,0.2)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    for(let i=0;i<40;i++){
+      ctx.beginPath();
+      ctx.arc(Math.random()*canvas.width,Math.random()*canvas.height,2,0,6.28);
+      ctx.fillStyle="white";
+      ctx.fill();
+    }
+  },100);
+}
+</script>
+
 </body>
 </html>
