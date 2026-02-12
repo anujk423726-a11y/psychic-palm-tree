@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter & Proposal for Neha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(to bottom, #ffe6e6, #ffb3ba);
+            color: #d63384;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .photo, .gallery-img, .gif {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .gifs {
+            margin: 20px 0;
+        }
+
+        .gif {
+            width: 200px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .letter {
+            font-size: 1.5em;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        .proposal-text {
+            animation: fadeIn 2s;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .love-meter {
+            font-size: 1.5em;
+            margin-top: 20px;
+            animation: glow 1s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #ff69b4; }
+            to { text-shadow: 0 0 20px #ff69b4; }
+        }
+
+        button {
+            background: #d63384;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: #b0246a;
+        }
+
+        /* Falling hearts animation */
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 2em;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { top: -10%; opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        /* Hide sections by default */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Responsive for mobile */
+        @media (max-width: 600px) {
+            .photo, .gallery-img, .gif {
+                width: 200px;
+            }
+            .gallery {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Section 1: Love Letter -->
+    <div id="love-letter" class="section active">
+        <div class="container">
+            <h1>My Love Letter to You</h1>
+            <img src="ChatGPT Image Jan 26, 2026, 08_24_26 PM.png" alt="Your honey say to this " class="photo">
+           <p class="letter">
+    My Dearest Neha,<br><br>
+    In the quiet moments when the world fades away, I find myself lost in thoughts of you. Your smile is like the first ray of sunlight breaking through a stormy sky, warming my soul and chasing away the shadows. From the day we met, you've been the melody in my heart, the spark that ignites my every dream.<br><br>
+    Remember our first walk under the stars? 🌟 Your laughter danced like fireflies in the night, and I knew then that you were my forever. You've turned ordinary days into adventures, filled with joy, tenderness, and a love so deep it feels like an endless ocean, pulling me closer with every wave.<br><br>
+    You are my strength, my inspiration, the one who makes me believe in magic. With you, life is a beautiful symphony, and I cherish every note we play together.<br><br>
+    Forever yours, in every heartbeat,<br>
+    Anuj 💖
+</p>
+            
+            <button onclick="playMusic()">Play Our Song</button>
+            <audio id="music" src="images/romantic-song.mp3" loop></audio>
+            <br>
+            <button onclick="nextSection()">Next: Our Pics & Proposal</button>
+        </div>
+    </div>
+
+    <!-- Section 2: Gallery & Proposal -->
+    <div id="gallery-proposal" class="section">
+        <div class="container">
+            <h1> you are in my heart  </h1>
+            
+            <!-- Photo Gallery -->
+            <div class="gallery">
+                <img src="WhatsApp Image 2026-01-21 at 8.19.33 PM.jpeg" alt="Memory 1" class="gallery-img">
+                <img src="WhatsApp Image 2026-01-06 at 1.56.18 PM.jpeg" alt="Memory 2" class="gallery-img">
+                <img src="WhatsApp Image 2026-01-06 at 1.48.31 PM.jpeg" alt="Memory 3" class="gallery-img">
+				<img src="WhatsApp Image 2026-01-21 at 8.19.00 PM.jpeg" alt="Memory 4" class="gallery-img">
+                <!-- Add more photos as needed -->
+            </div>
+            
+            <!-- Romantic GIFs -->
+            <div class="gifs">
+                <img src="https://media.giphy.com/media/3o7TKz9bX9Z8LxJL7y/giphy.gif" alt="Romantic GIF" class="gif"> <!-- Example: Kissing couple -->
+                <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Heart GIF" class="gif"> <!-- Example: Floating hearts -->
+            </div>
+            
+            <!-- Proposal Letter -->
+            <div class="proposal">
+                <h2 class="pulse">My Dearest Neha,</h2>
+                <p class="letter proposal-text">
+                    From the first time our eyes met, I knew you were the one. You've filled my life with joy, laughter, and endless love. Through every adventure and quiet moment, you've been my everything.<br><br>
+                    Today, I want to ask you something that will change our forever. Will you make me the happiest person alive and say yes to spending the rest of our lives together?<br><br>
+                    💍 Will you marry me? 💍<br><br>
+                    With all my heart,<br>
+                    Anuj
+                </p>
+                <div class="love-meter">Love Level: <span id="love-level">0%</span> ❤️</div>
+            </div>
+            
+            <button onclick="prevSection()">Back to Love Letter</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to play music
+        function playMusic() {
+            const audio = document.getElementById('music');
+            if (audio) audio.play();
+        }
+
+        // Navigation functions
+        function nextSection() {
+            document.getElementById('love-letter').classList.remove('active');
+            document.getElementById('gallery-proposal').classList.add('active');
+        }
+
+        function prevSection() {
+            document.getElementById('gallery-proposal').classList.remove('active');
+            document.getElementById('love-letter').classList.add('active');
+        }
+
+        // Generate falling hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Love meter animation (starts when proposal section is shown)
+        let loveInterval;
+        function startLoveMeter() {
+            let level = 0;
+            loveInterval = setInterval(() => {
+                level += 1;
+                document.getElementById('love-level').textContent = level + '%';
+                if (level >= 100) clearInterval(loveInterval);
+            }, 50);
+        }
+
+        // Trigger love meter when switching to proposal section
+        document.getElementById('gallery-proposal').addEventListener('transitionend', () => {
+            if (document.getElementById('gallery-proposal').classList.contains('active')) {
+                startLoveMeter();
+            }
+        });
+    </script>
+</body>
+</html>
